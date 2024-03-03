@@ -1,64 +1,79 @@
 package Task_1_23;
+
 import java.util.*;
 
 public class TrafficLight {
-    private List<String> colors;
-    private int[] intervals;
-    private int currentIndex;
-    private Timer timer;
-
-    public static final String PEDESTRIAN_CROSSING_LIGHT = "Pedestrian crossing light";
-    public static final String TRAFFIC_GUIDE_LIGHT = "Traffic guide light";
-    public static final String TRAFFIC_GUIDE_LIGHT_WITH_ARROW = "Traffic guide light with arrow";
-    private String trafficLightType;
-
-    public TrafficLight(int[] intervals, String trafficLightType) {
-        this.intervals = intervals;
-        this.currentIndex = 0;
-        this.trafficLightType = trafficLightType;
-        initializeColors();
-        initializeColors();
-        updateColors();
+    private enum Colors {
+        RED,
+        YELLOW,
+        GREEN,
+        GREEN_ARROW,
+        RED_ARROW,
     }
 
-    private void initializeColors() {
-        colors = new ArrayList<>();
-        colors.add("Red");
-        colors.add("Yellow");
-        colors.add("Green");
-        colors.add("Green arrow");
-        colors.add("Red arrow");
-    }
+    static class BasicTrafficLight {
+        public final ArrayList<Colors> colors = new ArrayList<Colors>();
+        public int[] intervals;
+        public int currentIndex;
+        public Timer timer;
 
-    private void updateColors() {
-        colors.clear();
-        colors.add("Red");
-        if (!PEDESTRIAN_CROSSING_LIGHT.equals(trafficLightType)) {
-            colors.add("Yellow");
+        public BasicTrafficLight(int[] intervals) {
+            this.intervals = intervals;
+            this.currentIndex = 0;
+            updateColors();
         }
-        colors.add("Green");
-        if (TRAFFIC_GUIDE_LIGHT_WITH_ARROW.equals(trafficLightType)) {
-            colors.add("Green arrow");
-            colors.add("Red arrow");
+
+        public void updateColors() {
+            colors.clear();
+            colors.add(Colors.RED);
+            colors.add(Colors.GREEN);
         }
-    }
 
-    public void start() {
-        timer = new Timer();
-        timer.schedule(new ChangeColor(), intervals[currentIndex], intervals[currentIndex]);
-    }
+        public void start() {
+            timer = new Timer();
+            timer.schedule(new ChangeColor(), intervals[currentIndex], intervals[currentIndex]);
+        }
 
-    public void stop() {
-        if (timer != null) {
-            timer.cancel();
+        public void stop() {
+            if (timer != null) {
+                timer.cancel();
+            }
+        }
+
+        private class ChangeColor extends TimerTask {
+            @Override
+            public void run() {
+                currentIndex = (currentIndex + 1) % colors.size();
+                System.out.println(colors.get(currentIndex));
+            }
         }
     }
 
-    private class ChangeColor extends TimerTask {
+    static class TrafficSignal extends BasicTrafficLight {
+        public TrafficSignal(int[] intervals) {
+            super(intervals);
+        }
+
         @Override
-        public void run() {
-            currentIndex = (currentIndex + 1) % colors.size();
-            System.out.println(colors.get(currentIndex));
+        public void updateColors() {
+            super.updateColors();
+            colors.add(1, Colors.YELLOW);
+            colors.add(3, Colors.YELLOW);
+        }
+    }
+
+    static class TrafficSignalWithArrow extends BasicTrafficLight {
+        public TrafficSignalWithArrow(int[] intervals) {
+            super(intervals);
+        }
+
+        @Override
+        public void updateColors() {
+            super.updateColors();
+            colors.add(1, Colors.YELLOW);
+            colors.add(Colors.GREEN_ARROW);
+            colors.add(Colors.RED_ARROW);
+            colors.add(5, Colors.YELLOW);
         }
     }
 }
