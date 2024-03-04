@@ -1,53 +1,41 @@
 package Task_2_30;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Solution {
-    public static List<HashSet<Student>> Solution(List<Student> students){
-        //1 способ
-        //2 способ: пройти циклом с counter и посчитать сколько
-        //людей с каждого курса, и зарезервировать для них позции в List
-        HashSet<Student> firstCourse = new HashSet<>();
-        HashSet<Student> secondCourse = new HashSet<>();
-        HashSet<Student> thirdCourse = new HashSet<>();
-        HashSet<Student> fourthCourse = new HashSet<>();
-        HashSet<Student> fifthCourse = new HashSet<>();
-        HashSet<Student> sixthCourse = new HashSet<>();
+    public static void Solution(List<Student> students) {
+        List<Student> firstCourse = new LinkedList<>();
+        List<Student> secondCourse = new LinkedList<>();
+        List<Student> thirdCourse = new LinkedList<>();
+        List<Student> fourthCourse = new LinkedList<>();
+        List<Student> fifthCourse = new LinkedList<>();
+        List<Student> sixthCourse = new LinkedList<>();
 
-        for (Student student : students){
-            switch (student.course){
-                case 1:
-                    firstCourse.add(student);
-                    break;
-                case 2:
-                    secondCourse.add(student);
-                    break;
-                case 3:
-                    thirdCourse.add(student);
-                    break;
-                case 4:
-                    fourthCourse.add(student);
-                    break;
-                case 5:
-                    fifthCourse.add(student);
-                    break;
-                case 6:
-                    sixthCourse.add(student);
-                    break;
-                default:
-                    break;
+        List<Student> studentsToRemove = new LinkedList<>();
+
+        for (Student student : students) {
+            switch (student.course) {
+                case 1 -> firstCourse.add(student);
+                case 2 -> secondCourse.add(student);
+                case 3 -> thirdCourse.add(student);
+                case 4 -> fourthCourse.add(student);
+                case 5 -> fifthCourse.add(student);
+                case 6 -> sixthCourse.add(student);
+                default -> {
+                }
             }
+            studentsToRemove.add(student);
         }
-        List<HashSet<Student>> sortedStudents = new LinkedList<>();
-        sortedStudents.add(firstCourse);
-        sortedStudents.add(secondCourse);
-        sortedStudents.add(thirdCourse);
-        sortedStudents.add(fourthCourse);
-        sortedStudents.add(fifthCourse);
-        sortedStudents.add(sixthCourse);
 
-        return sortedStudents;
+        students.removeAll(studentsToRemove);
+
+        students.addAll(firstCourse);
+        students.addAll(secondCourse);
+        students.addAll(thirdCourse);
+        students.addAll(fourthCourse);
+        students.addAll(fifthCourse);
+        students.addAll(sixthCourse);
+
     }
 }

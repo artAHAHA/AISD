@@ -26,16 +26,21 @@ public class Main {
         students.add(student8);
         students.add(student9);
 
-/*        for (Student student : students) {
-            System.out.println(student.name + " " + student.course);
-        }*/
+        System.out.println("Before:" + '\n');
 
-        List<HashSet<Student>> sortedStudents = Solution.Solution(students);
-        for (HashSet<Student> studentSet : sortedStudents) {
-            for (Student student : studentSet) {
+        for (Student student : students) {
+            System.out.println(student.name + " " + student.course);
+        }
+
+        System.out.println("""
+
+                After:
+                """);
+
+        Solution.Solution(students);
+            for (Student student : students) {
                 System.out.println(student.name + " " + student.course);
             }
-        }
     }
 
 }
