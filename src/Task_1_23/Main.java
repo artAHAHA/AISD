@@ -1,3 +1,4 @@
+/*
 package Task_1_23;
 
 import Task_1_23.trafficLight.TrafficSignalWithArrow;
@@ -27,3 +28,4 @@ public class Main {
         trafficSignalWithArrow.stop();
     }
 }
+*/
