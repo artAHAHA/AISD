@@ -1,7 +1,7 @@
 package Task_2_30;
 
+import Task_2_30.Solution.Faculty;
 import Task_2_30.Solution.SimpleLinkedList;
-import Task_2_30.Solution.Solution;
 import Task_2_30.Solution.Student;
 import Task_2_30.Utils.ArrayUtils;
 import Task_2_30.Utils.JTableUtils;
@@ -142,7 +142,7 @@ public class FrameMain extends JFrame {
                             studentsList.addLast(new Student(name, course));
                         }
                     }
-                    Solution.solution(studentsList);
+                    Faculty.sortStudents(studentsList);
                     String[][] dataArray = new String[studentsList.size()][2];
                     int i = 0;
                     for (Student student : studentsList) {
