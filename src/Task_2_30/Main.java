@@ -1,9 +1,5 @@
 package Task_2_30;
 
-import Task_2_30.Solution.Faculty;
-import Task_2_30.Solution.SimpleLinkedList;
-import Task_2_30.Solution.Student;
-
 public class Main {
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {

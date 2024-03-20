@@ -1,4 +1,4 @@
-package Task_2_30.Solution;
+package Task_2_30.sortStudents;
 
 public class Student {
     public String name;

@@ -1,7 +1,6 @@
-/*
 package Task_1_23;
 
-import Task_1_23.trafficLight.TrafficSignalWithArrow;
+import Task_1_23.trafficlight.TrafficSignalWithArrow;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,4 +27,3 @@ public class Main {
         trafficSignalWithArrow.stop();
     }
 }
-*/

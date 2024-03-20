@@ -1,8 +1,8 @@
 package Task_2_30;
 
-import Task_2_30.Solution.Faculty;
-import Task_2_30.Solution.SimpleLinkedList;
-import Task_2_30.Solution.Student;
+import Task_2_30.sortStudents.Faculty;
+import Task_2_30.sortStudents.SimpleLinkedList;
+import Task_2_30.sortStudents.Student;
 import Task_2_30.Utils.ArrayUtils;
 import Task_2_30.Utils.JTableUtils;
 import Task_2_30.Utils.SwingUtils;

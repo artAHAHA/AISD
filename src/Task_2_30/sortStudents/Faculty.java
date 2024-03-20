@@ -1,6 +1,4 @@
-package Task_2_30.Solution;
-
-import java.util.Scanner;
+package Task_2_30.sortStudents;
 
 public class Faculty {
     private SimpleLinkedList<Student>[] courseLists;
